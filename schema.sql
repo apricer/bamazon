@@ -3,8 +3,8 @@ USE bamazon;
 
 CREATE TABLE products
 (
-    Itemid INTEGER
-    AUTO_INCREMENT NOT NULL
+    Itemid INT
+    AUTO_INCREMENT NOT NULL,
 ProductName VARCHAR
     (45) NOT NULL,
 DepartmentName VARCHAR
