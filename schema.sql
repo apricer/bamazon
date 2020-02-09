@@ -1,19 +1,21 @@
+DROP DATABASE IF EXISTS bamazon;
 CREATE DATABASE bamazon;
+
 USE bamazon;
 
 CREATE TABLE products
 (
-    Itemid INT
+    Itemid INTEGER
     AUTO_INCREMENT NOT NULL,
-ProductName VARCHAR
+    ProductName VARCHAR
     (45) NOT NULL,
-DepartmentName VARCHAR
+    DepartmentName VARCHAR
     (45) NOT NULL,
-Price DECIMAL
-    (10,4) NOT NULL,
-StockQuantity INTEGER
+    Price DECIMAL
+    (10,2) NOT NULL,
+    StockQuantity INTEGER
     (10) NOT NULL,
-primary key
+    primary key
     (Itemid)
 );
 
@@ -33,3 +35,4 @@ primary key
         ("Cartier Tank", "Watches", 25.50, 57),
         ("Tudor Black Bay", "Watches", 3950.00, 8),
         ("Tudor North Flag", "Watches", 4100.00, 5);
+        

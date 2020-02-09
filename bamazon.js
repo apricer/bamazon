@@ -32,11 +32,14 @@ var promptCustomer = function (res) {
         message: "What would you like to purchase? [Quit with Q]"
     }]).then(function (answer) {
         var correct = false;
+        if (answer.choice.toUpperCase() == "Q") {
+            process.exit();
+        }
         for (var = 0; i < res.length; i++) {
         if (res[i].productname == answer.choice) {
             correct = true;
             var product = answer.choice;
-            var id = 1;
+            var id = i;
             inquirer.prompt({
                 type: 'input',
                 name: 'quant',
@@ -51,16 +54,22 @@ var promptCustomer = function (res) {
             }).then(function (answer) {
                 if ((res[id].stockquantity - answer.quant) > 0) {
                     connection.query("UPDATE products SET
-                        stockquantity = '" + res[id].stockquantity - answer.quant)
-                        + "'" WHERE productname = '" + product + "'", function(err, res2) {
-                        console.log("Product Bought!");
-                    makeTable();
-                })
+                            stockquantity = '" + res[id].stockquantity -
+                            answer.quant) + "' WHERE productname = '" + product
+                        + "'", function (err, res2) {
+                            console.log("Product Bought!");
+                            makeTable();
+                        })
         } else {
             console.log("Not a valid selection!");
             promptCustomer(res);
         }
     })
+}
+        }
+if (i == res.length && correct == false) {
+    console.log("Not a valid selection!");
+    promptCustomer(res);
 }
     })
 }
