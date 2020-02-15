@@ -3,26 +3,35 @@ CREATE DATABASE bamazon;
 
 USE bamazon;
 
-CREATE TABLE products(
-    Itemid INTEGER AUTO_INCREMENT NOT NULL,
-    ProductName VARCHAR (45) NOT NULL,
-    DepartmentName VARCHAR (45) NOT NULL,
-    Price DECIMAL (10,2) NOT NULL,
-    StockQuantity INTEGER (10) NOT NULL,
-    primary key (Itemid)
+CREATE TABLE products
+(
+    item_id INT
+    AUTO_INCREMENT NOT NULL,
+  product_name VARCHAR
+    (45) NOT NULL,
+  department_name VARCHAR
+    (45) NOT NULL,
+  price DECIMAL
+    (10,2) NOT NULL,
+  stock_quantity INT
+    (10) NOT NULL,
+  primary key
+    (item_id)
 );
 
-SELECT * FROM products;
+    SELECT *
+    FROM products;
 
-INSERT INTO products (ProductName, DepartmentName, Price, StockQuantity)
-VALUES ("Rolex Datejust", "Watches", 7500.00, 1),
-    ("Rolex Submariner", "Watches", 8900.00, 3),
-    ("Rolex GMT Master II", "Watches", 9550.00, 5),
-    ("Rolex Explorer II", "Watches", 6550.00, 4),
-    ("Rolex Oyster Perpetual", "Watches", 5400.00, 11),
-    ("Rolex Yachtmaster", "Watches", 13000.00, 6),
-    ("Rolex Milgauss", "Watches", 9200.00, 3),
-    ("Cartier Tank", "Watches", 25.50, 57),
-    ("Tudor Black Bay", "Watches", 3950.00, 8),
-    ("Tudor North Flag", "Watches", 4100.00, 5);
-        
+    INSERT INTO products
+        (product_name, department_name, price, stock_quantity)
+    VALUES
+        ("Ring Doorbell", "Electronics", 99.95, 300),
+        ("Operation", "Board Games", 19.99, 250),
+        ("Dog Collars", "Pets", 7.99, 750),
+        ("iPhone11", "Electronics", 1200.00, 50),
+        ("Beneful Dog Food", "Pets", 17.99, 78),
+        ("Crossfire", "Board Games", 39.99, 125),
+        ("HDMI Cable", "Electronics", 10.99, 1250),
+        ("Wireless Headphones", "Films", 49.99, 275),
+        ("National Lampoons Christmas Vacation", "Movies", 9.99, 450),
+        ("The Matrix", "Movies", 14.95, 95);

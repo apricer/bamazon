@@ -11,15 +11,15 @@ var connection = mysql.createConnection({
 
 connection.connect(function (err) {
     if (err) throw err;
-    console.log("connection successful!");
+    console.log("Connection successful!");
 })
 
 var makeTable = function () {
     connection.query("SELECT * FROM products", function (err, res) {
         for (var i = 0; i < res.length; i++) {
-            console.log(res[i].itemid + " || " + res[i].productname + " || " +
-                res[i].departmentname + " || " + res[i].price + " || " + res[i].
-                    stockquantity + "\n");
+            console.log(res[i].item_id + " || " + res[i].product_name + " || " +
+                res[i].department_name + " || " + res[i].price + " || " + res[i].
+                    stock_quantity + "\n");
         }
         promptCustomer(res);
     })
@@ -36,7 +36,7 @@ var promptCustomer = function (res) {
             process.exit();
         }
         for (var i = 0; i < res.length; i++) {
-            if (res[i].productname == answer.choice) {
+            if (res[i].product_name == answer.choice) {
                 correct = true;
                 var product = answer.choice;
                 var id = i;
@@ -52,9 +52,9 @@ var promptCustomer = function (res) {
                         }
                     }
                 }).then(function (answer) {
-                    if ((res[id].stockquantity - answer.quant) > 0) {
-                        connection.query("UPDATE products SET stockquantity = '" + (res[id].stockquantity - answer.quant)
-                            + "' WHERE productname = '" + product + "'", function (err, res2) {
+                    if ((res[id].stock_quantity - answer.quant) > 0) {
+                        connection.query("UPDATE products SET stockquantity = '" + (res[id].stock_quantity - answer.quant)
+                            + "' WHERE product_name = '" + product + "'", function (err, res2) {
                                 console.log("Product Bought!");
                                 makeTable();
                             })
